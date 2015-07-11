@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class WeatherActivity extends Activity /*implements OnClickListener*/ {
+public class WeatherActivity extends Activity implements OnClickListener {
 	
 	private LinearLayout weatherInfoLayout;
 	private TextView cityNameText;
@@ -43,8 +43,8 @@ public class WeatherActivity extends Activity /*implements OnClickListener*/ {
 		temp1Text = (TextView) findViewById(R.id.temp1);
 		temp2Text = (TextView) findViewById(R.id.temp2);
 		currentDateText = (TextView) findViewById(R.id.current_date);
-		//switchCity = (Button) findViewById(R.id.switch_city);
-		//refreshWeather = (Button) findViewById(R.id.refresh_weather);
+		switchCity = (Button) findViewById(R.id.switch_city);
+		refreshWeather = (Button) findViewById(R.id.refresh_weather);
 		String countyCode = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCode)) {
 			publishText.setText("同步中。。。");
@@ -54,10 +54,10 @@ public class WeatherActivity extends Activity /*implements OnClickListener*/ {
 		} else {
 			showWeather();
 		}
-		//switchCity.setOnClickListener(this);
-		//refreshWeather.setOnClickListener(this);
+		switchCity.setOnClickListener(this);
+		refreshWeather.setOnClickListener(this);
 	}
-	/*
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -80,7 +80,7 @@ public class WeatherActivity extends Activity /*implements OnClickListener*/ {
 		}
 		
 	}
-	*/
+	
 	
 	//查询县级代号对应的天气代号
 	private void queryWeatherCode(String countyCode) {
